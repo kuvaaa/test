@@ -48,8 +48,17 @@ sudo npm install -g electron
 
 elecron .
 
-
 ![screenshot](https://img-fotki.yandex.ru/get/68946/196117532.1/0_13090b_c4fc4dbf_orig.png)
+
+
+## connection. 
+
+1 Run the application. 
+2 Configure it (specify the server on which I play, the account under which the application will run). 
+3 Add in your client minecraft new server: localhost:proxy_port (for example: localhost:25568). 
+4 Connect to this server. 
+
+You will be redirected to the server specified in the application settings under the account specified in the application settings.
 
 ## technical dependencies
 
