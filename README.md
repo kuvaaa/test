@@ -1,5 +1,12 @@
 # minecraft.proxy.bot.gui
 
+If you have 2 or more account minecraft and you are tired to switch between them constantly to restart the client, this app is for you. 
+
+The application is a proxy server for minecraft. It uses the development group of enthusiasts: ![https://github.com/PrismarineJS/node-minecraft-protocol](https://github.com/PrismarineJS/node-minecraft-protocol)
+
+The application also incorporates bot ![https://github.com/rom1504/rbot](https://github.com/rom1504/rbot)
+
+Launch of bot is optional. If the bot starts running enabled every time when you will go out from the proxy, instead you will have to enter the bot.
 
 
 ## install
