@@ -52,4 +52,6 @@ The app is a Packed site, and contains a web server (port 8080) and websocket se
 
 To see the app interface is also possible via a web interface at the address YOU_IP:8080. If your ports 8080 and 8081 are available from the Internet, anyone can go to the interface of the bot at the address YOU_INTERNET_IP:8080. This can lead to theft of credentials for your minecraft account.
 
-!!! I recommend to close the access from the Internet (and local network) to ports 8080 and 8081
+Also attackers with some effort can get full access to your file system. 
+
+## !!! To avoid this i strongly recommend to close the access from the Internet (and local network) to ports 8080 and 8081
