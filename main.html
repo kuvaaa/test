@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mini Code Editor</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="bower_components/webix/codebase/webix.css" type="text/css"> 
+	<link rel="stylesheet" href="resources/skins/graycompact.css" type="text/css">
+	<link rel="stylesheet" href="resources/css/chrome.css" type="text/css"> 
+	<link rel="stylesheet" href="resources/css/extend.css" type="text/css"> 
+
+
+	<script src="bower_components/webix/codebase/webix.js" type="text/javascript" charset="utf-8"></script>
+	<script src="bower_components/webix/codebase/i18n/ru.js" type="text/javascript" charset="utf-8"></script>
+
+
+	<script src="libs/my.js" type="text/javascript" charset="utf-8"></script>
+	<script src="libs/my.node.modules.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="libs/my.base64.js" type="text/javascript" charset="utf-8"></script>
+	<script src="libs/my.ipc.js" type="text/javascript" charset="utf-8"></script>
+	<script src="libs/my.file.system.js" type="text/javascript" charset="utf-8"></script>
+	
+</head>
+<body>
+<script type="text/javascript" charset="utf-8">
+
+webix.i18n.setLocale("ru-RU")
+
+webix.ready(function(){
+
+	webix.ui({
+//		type:"line",
+		language:"ru",
+        multi:true,
+        view:"accordion",
+        width: "100%",
+        height: "100%",
+	    rows: [
+	        { 
+	        	template:"main top",
+	        	height: 40,
+		    	css:"my_template"
+	        },
+	        { 	
+				cols: [
+					{
+						id: "conf",
+						width: 300
+					},
+					{
+						id: "map",
+						template: "123"
+					}
+				]
+			},
+			{ view: "resizer" },
+		    {
+		    	head:"консоль",
+		    	height: 200, 
+	    		template:"main bottom",
+	    		css:"my_template"
+		    }
+	    ]
+	});
+
+
+
+
+	var file = my.fs.open_file_p("./bot/conf.json");
+    file.then(data => {
+		var conf = JSON.parse(data);
+		console.log(conf);
+
+	    // форма ввода данных в формуляр выбранного изделия
+	    var myconf = webix.ui({
+	        view: "form",
+	        complexData:true,
+	        //scroll: "xy",
+	        data: conf,
+			width: 450,
+	        elements:[
+				{
+					view:"fieldset",
+					label: "target server settings",
+					body:{
+						rows:[
+							{ view:"text", id:"target.host", name:"target.host", labelWidth: 140, label:"host"},
+							{ view:"text", id:"target.port", name:"target.port", labelWidth: 140, label:"port"},
+							{ view:"text", id:"target.login", name:"target.login", labelWidth: 140, label:"login"},
+							{ view:"text", type:'password', id:"target.password", name:"target.password", labelWidth: 140, label:"password"},
+							{ view:"text", id:"target.username", name:"target.username", labelWidth: 140, label:"nickname"}
+						]
+					}
+				},
+				{
+					view:"fieldset",
+					label: "minecraft proxy settings",
+					body:{
+						rows:[
+							{ view:"text", id:"server.port", name:"server.port", labelWidth: 140, label:"proxy port"},
+						]
+					}
+				},
+				{
+					view:"fieldset",
+					label: "bot settings",
+					body:{
+						rows:[
+							{ view:"checkbox", id:"bot.withbot", name:"bot.withbot", labelWidth: 140, label:"enable bot"},
+							{ view:"text", id:"bot.master", name:"bot.master", labelWidth: 140, label:"master nickname"},
+							{ view:"checkbox", id:"bot.radar.enabled", name:"bot.radar.enabled", labelWidth: 140, label:"enable radar"},
+							{ view:"text", id:"bot.radar.port", name:"bot.radar.port", labelWidth: 140, label:"radar port"}
+						]
+					}
+				},
+	            {cols:[
+	                { view:"button", value:"start proxy", click:"start_proxy()"},  
+	                { view:"button", value:"stop proxy", click:"stop_proxy()"}
+	            ]}
+	        ],
+	        id: "conf"
+	    },  $$("conf"));
+
+	    $$("conf").elements["target.host"].attachEvent("onChange", function(newv, oldv){
+	    	conf.target.host = newv;
+	        conf_save();
+	    }); 
+	    $$("conf").elements["target.port"].attachEvent("onChange", function(newv, oldv){
+	    	conf.target.port = newv;
+	        conf_save();
+	    }); 
+	    $$("conf").elements["target.login"].attachEvent("onChange", function(newv, oldv){
+	    	conf.target.login = newv;
+	        conf_save();
+	    }); 
+	    $$("conf").elements["target.password"].attachEvent("onChange", function(newv, oldv){
+	    	conf.target.password = newv;
+	        conf_save();
+	    }); 
+	    $$("conf").elements["target.username"].attachEvent("onChange", function(newv, oldv){
+	    	conf.target.username = newv;
+	        conf_save();
+	    }); 
+	    $$("conf").elements["server.port"].attachEvent("onChange", function(newv, oldv){
+	    	conf.server.port = newv;
+	        conf_save();
+	    }); 
+	    $$("conf").elements["bot.master"].attachEvent("onChange", function(newv, oldv){
+	    	conf.bot.master = newv;
+	        conf_save();
+	    });
+	    $$("conf").elements["bot.radar.port"].attachEvent("onChange", function(newv, oldv){
+	    	conf.bot.radar.port = newv;
+	        conf_save();
+	    });
+	    $$("conf").elements["bot.withbot"].attachEvent("onChange", function(newv, oldv){
+	    	conf.bot.withbot = false;
+	    	if(newv) conf.bot.withbot = true;
+	        conf_save();
+	    }); 
+	    $$("conf").elements["bot.radar.enabled"].attachEvent("onChange", function(newv, oldv){
+	    	conf.bot.radar.enabled = false;
+	    	if(newv) conf.bot.radar.enabled = true;
+	        conf_save();
+	    }); 
+	    
+	    function conf_save(){
+			var result = my.fs.save_file_p("./bot/conf.json", JSON.stringify(conf,"",'\t') );				
+			result.then(json => {
+				console.log("save");
+				console.log(json);
+			});
+
+	    }
+
+		my.ipc.on("radar.start", function(json) {
+			if( conf.bot.radar.enabled ){
+			    // форма ввода данных в формуляр выбранного изделия
+			    mymap = webix.ui({
+			        view: "iframe",
+			        src: "http://localhost:"+conf.bot.radar.port,
+			        id: "map"
+			    },  $$("map"));
+			    console.log("start MAP localhost:"+conf.bot.radar.port);
+			}
+		});
+
+
+
+		my.ipc.on("radar.stop", function(json) {
+		    // форма ввода данных в формуляр выбранного изделия
+		    mymap = webix.ui({
+		        view: "template",
+		        template: "",
+		        id: "map"
+		    },  $$("map"));
+		    console.log("stop MAP");
+		});
+
+    });
+});
+
+
+
+function start_proxy(){
+	my.ipc.request("proxy.start", {},function(err,json){
+		console.log(err);
+		console.log(json);
+	});
+}
+function stop_proxy(){
+	my.ipc.request("proxy.stop", {},function(err,json){
+		console.log(err);
+		console.log(json);
+	});
+}
+
+
+
+
+</script>
+
+
+</body>
+</html>

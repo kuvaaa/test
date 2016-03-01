@@ -1,0 +1,21 @@
+{
+	"target": {
+		"host": "host_for_like_vanilla_1.9_minecraft_server.com",
+		"port": "25565",
+		"login": "",
+		"password": "",
+		"username": ""
+	},
+	"server": {
+		"port": "25568",
+		"version": "1.9"
+	},
+	"bot": {
+		"master": "owner nick",
+		"withbot": true,
+		"radar": {
+			"enabled": false,
+			"port": 25570
+		}
+	}
+}

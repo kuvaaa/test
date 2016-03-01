@@ -1,0 +1,210 @@
+body{
+	background-color:#222;
+}
+.my_scroll {
+    overflow: scroll;
+}
+
+.mydelete,
+.myedit{
+    width:65px;
+    height: 21px;
+    text-align: center;
+    float:right;
+    background-color:#444;
+    color:white;
+    border-radius:3px;
+    margin-left: 6px;
+    border: solid 1px #222;
+}
+.mydeleteico{
+    width:25px;
+    height: 18px;
+    text-align: center;
+    float:right;
+    background-color:#444;
+    color:white;
+    border-radius:3px;
+    margin-left: 6px;
+    border: solid 1px #222;
+}
+
+.mydeleteico:hover{
+    background-color:#644;
+}
+
+
+
+.webix_selecttree{
+    background-color:#888;
+    margin: 0px;
+    padding: 0px;
+    collor:#000;
+}
+
+.webix_accordionitem{
+    transition:width 0.5s;
+}
+.webix_accordionitem.vertical{
+    transition:height 0.5s;
+}
+
+
+.CodeMirror, .CodeMirror-scroll {
+/*    min_height: 250;
+    max_height: 300;*/
+    height: 300;
+}
+
+.my_markdown,
+.my_markdown > div,
+.my_markdown > div > div,
+.my_markdown > div > span {
+    background-color:#ddd;
+    font-size: 16px;
+    collor: #222222;
+    padding: 15px;
+}
+
+.my_markdown,
+.my_markdown > div {
+    overflow: scroll;
+}
+
+
+.my_template{
+    background-color:#555;
+    border: solid 1px #000;
+    box-shadow: 0px 0px 2px #000 inset;
+}
+
+.my_logo {
+    background-color: #666;
+    border: none 0px #666;
+}
+
+.my_menu_button button
+{
+
+    border-radius:4px;
+    font-size: 12pt;
+    text-decoration: none; /* убирать подчёркивание у ссылок */
+    user-select: none; /* убирать выделение текста */
+    padding: 0pt; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+    background-color:#777;
+    border: none 1px #888;
+}
+.my_menu_button button,
+.my_menu_button button:focus{
+    background-color:#777;
+}
+.my_menu_button button:hover{
+    background-color:#666;
+}
+
+
+
+
+.my_calc_display input{
+    border: solid 1px #555;
+    box-shadow: 0px 0px 9px #666 inset;
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: right;
+    color: #000;
+    border-radius:4px;
+    background: -moz-linear-gradient(#eee, #999, #aaa);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#eee), to(#aaa), color-stop(0.2, #999));
+}
+
+.my_calc_button
+{
+    width: 20%;
+    height: 20px;
+    border-radius:4px;
+
+}
+
+
+.my_calc_button button
+{
+/*    ;
+    border: solid 1px #444;
+    box-shadow: 2px 2px 4px #222;
+    box-shadow: 0px 0px 9px #222 inset;*/
+    border-radius:4px;
+    font-size: 12pt;
+    color: #fff; /* цвет текста */
+    text-decoration: none; /* убирать подчёркивание у ссылок */
+    user-select: none; /* убирать выделение текста */
+    padding: 0pt; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+    height: 20px;
+    width: 90%;
+    margin: 2px;
+    box-shadow: 0px 0px 20px #444 inset;
+    box-shadow: 0px 1px 3px #333;
+}
+
+.my_calc_gray button,
+.my_calc_gray button:focus{
+    /*background-color:#777;*/
+    background: -moz-linear-gradient(#fff, #777, #999);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#fff), to(#999), color-stop(0.2, #777));
+}
+.my_calc_gray button:hover{
+    /*background-color:#888;*/
+    background: -moz-linear-gradient(#fff, #888, #999);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#fff), to(#999), color-stop(0.2, #888));
+}
+
+
+.my_calc_dark button,
+.my_calc_dark button:focus{
+    /*background-color:#555;*/
+    background: -moz-linear-gradient(#ddd, #555, #777);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#ddd), to(#777), color-stop(0.2, #555));
+}
+.my_calc_dark button:hover{
+    /*background-color:#666;*/
+    background: -moz-linear-gradient(#ddd, #666, #777);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#ddd), to(#777), color-stop(0.2, #666));
+}
+
+
+.my_calc_red button,
+.my_calc_red button:focus{
+    /*background-color:#644;*/
+    background: -moz-linear-gradient(#fdd, #755, #977);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#fdd), to(#977), color-stop(0.2, #755));
+}
+.my_calc_red button:hover{
+    /*background-color:#755;*/
+    background: -moz-linear-gradient(#fdd, #866, #977);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#fdd), to(#977), color-stop(0.2, #866));
+}
+
+.my_calc_blue button,
+.my_calc_blue button:focus{
+    /*background-color:#763;*/
+    background: -moz-linear-gradient(#dfd, #575, #797);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#dfd), to(#797), color-stop(0.2, #575));
+}
+.my_calc_blue button:hover{
+    /*background-color:#874;*/
+    background: -moz-linear-gradient(#dfd, #686, #797);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#dfd), to(#797), color-stop(0.2, #686));
+}
+
+
+.my_calc_orange button,
+.my_calc_orange button:focus{
+    /*background-color:#446;*/
+    background: -moz-linear-gradient(#ddf, #557, #779);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#ddf), to(#779), color-stop(0.2, #557));
+}
+.my_calc_orange button:hover{
+    /*background-color:#557;*/
+    background: -moz-linear-gradient(#ddf, #668, #779);
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#ddf), to(#779), color-stop(0.2, #668));}
