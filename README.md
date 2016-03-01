@@ -42,6 +42,7 @@ sudo npm install -g electron
 elecron .
 
 
+![screenshot](https://img-fotki.yandex.ru/get/68946/196117532.1/0_13090b_c4fc4dbf_orig.png)
 
 ## technical dependencies
 
