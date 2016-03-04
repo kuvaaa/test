@@ -3,7 +3,7 @@
 var mineflayer = require('mineflayer');
 var blockFinderPlugin = require('mineflayer-blockfinder')(mineflayer);
 var navigatePlugin = require('mineflayer-navigate')(mineflayer);
-var navigate2Plugin = require('./avoidBedrock.js')(mineflayer);
+var navigate2Plugin = require('../node_modules/rbot/avoidBedrock.js')(mineflayer);
 var async=require('async');
 var vec3 = mineflayer.vec3;
 
@@ -18,14 +18,8 @@ function init(conf) {
     navigatePlugin(bot);
     navigate2Plugin(bot);
     blockFinderPlugin(bot);
-    var task=require('./task');
-    var achieve=require('./achieve');
-
-    // var chat = require('./bot.chat.js');
-    // chat.init(bot,conf);
-
-    // var metro = require('./bot.metro.js');
-    // metro.init(bot,conf);
+    var task=require('../node_modules/rbot/task');
+    var achieve=require('../node_modules/rbot/achieve');
 
     bot.masters = [conf.bot.master];
     bot.quietMode = true;

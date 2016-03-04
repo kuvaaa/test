@@ -1,6 +1,6 @@
 {
 	"target": {
-		"host": "host_for_like_vanilla_1.9_minecraft_server.com",
+		"host": "",
 		"port": "25565",
 		"login": "",
 		"password": "",

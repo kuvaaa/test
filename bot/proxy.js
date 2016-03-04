@@ -17,14 +17,14 @@ function start(conf) {
 
   if( conf.bot.withbot ){
     ptr.botstatus = false;
-    ptr.BOT = require('./rbot/rbot.my.js');
+    ptr.BOT = require('./rbot.my.js');
     ptr.bot = ptr.BOT.init(conf);
   }
 
   ptr.srv.on('login', function(client) {
     ptr.client = client;
     if(conf.bot.withbot && client.username!=conf.target.username){
-      ptr.bot.chat("Now I'm going to "+client.username);
+      //ptr.bot.chat("Now I'm going to "+client.username);
       ptr.bot.end();
 
     }
@@ -112,7 +112,7 @@ function start(conf) {
 
 function stop(){
   if(ptr.bot && ptr.conf.bot.withbot){
-      ptr.bot.chat("66");
+      //ptr.bot.chat("66");
       ptr.bot.end();
   }
   if(ptr.client)
