@@ -17,13 +17,6 @@ cd ./minecraft.proxy.bot.gui
 
 npm install
 
-cd ./node_modules/minecraft-protocol
-
-npm install
-
-cd ../../
-
-
 
 ## Install electron_prebuilt
 
